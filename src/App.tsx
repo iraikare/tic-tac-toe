@@ -1,31 +1,42 @@
-const Square = ({value}) => {
-  const valor = value ?? "-";
+import { useState } from "react";
 
-  return (<button className="square">
+const Square = ({value}) => {
+  const [valor, MudarValor] = useState(value ?? "-");
+  const EscutarClique = (evento) => {
+    console.info("evento")
+    MudarValor("x");
+  };
+
+
+  return (<button className="square" onClick= {EscutarClique}>
   {valor}
   </button>);
 };
 
-const App = () => {
+const Board = () => {
   return (
     <>
     <div className="board-row">
-      <Square value="x"/>
-      <Square />
-      <Square />
+      <Square value="1"/>
+      <Square value="2"/>
+      <Square value="3"/>
     </div>
     <div className="board-row">
-      <Square />
-      <Square />
-      <Square />
+      <Square value="4"/>
+      <Square value="5"/>
+      <Square value="6"/>
     </div>
     <div className="board-row">
-      <Square />
-      <Square />
-      <Square />
+      <Square value="7"/>
+      <Square value="8"/>
+      <Square value="9"/>
     </div>
     </>
   );
 };
 
-export default App
+const App = () => {
+  return <Board/>
+}
+
+export default App;
